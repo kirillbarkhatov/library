@@ -21,10 +21,15 @@ class Library:
         book.id = self.__get_last_book_id() + 1
         self.books.append(book)
 
-    def delete_book(self):
+    def delete_book(self, id: int) -> None:
         """Функция для удаления книги"""
 
-        pass
+        ids = self.__get_list_ids()
+        try:
+            index_for_delete = ids.index(id)
+            del self.books[index_for_delete]
+        except ValueError:
+            print(f"Книги с id={id} нет в библиотеке")
 
     def search_book(self):
         """Функция для поиска книги"""
@@ -37,10 +42,15 @@ class Library:
         for book in self.books:
             print(book)
 
+    def __get_list_ids(self) -> list[int]:
+        """Функция для получения списка всех id книг в библиотеке"""
+
+        return [book.id for book in self.books]
+
     def __get_last_book_id(self) -> int:
         """Функция для получения наибольшего id книги, имеющейся в библиотеке"""
 
-        ids = [book.id for book in self.books]
+        ids = self.__get_list_ids()
         if not ids:
             return 0
         max_id = max(ids)

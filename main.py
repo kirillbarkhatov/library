@@ -16,3 +16,5 @@ if __name__ == "__main__":
 
     print(library)
     library.print_all_book()
+    library.delete_book(4)
+    library.print_all_book()
