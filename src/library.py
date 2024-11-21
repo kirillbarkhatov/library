@@ -21,15 +21,30 @@ class Library:
         book.id = self.__get_last_book_id() + 1
         self.books.append(book)
 
-    def delete_book(self, id: int) -> None:
-        """Функция для удаления книги"""
+    def __get_book_index_via_id(self, book_id: int) -> int:
+        """Получение экземпляра книги по id"""
 
         ids = self.__get_list_ids()
+        book_index = ids.index(book_id)
+        return book_index
+
+    def change_book_status(self, book_id, status) -> None:
+        """Изменение статуса книги"""
+
         try:
-            index_for_delete = ids.index(id)
+            book_index = self.__get_book_index_via_id(book_id)
+            self.books[book_index].status = status
+        except ValueError:
+            print(f"Книги с id={book_id} нет в библиотеке")
+
+    def delete_book(self, book_id: int) -> None:
+        """Функция для удаления книги"""
+
+        try:
+            index_for_delete = self.__get_book_index_via_id(book_id)
             del self.books[index_for_delete]
         except ValueError:
-            print(f"Книги с id={id} нет в библиотеке")
+            print(f"Книги с id={book_id} нет в библиотеке")
 
     def search_book(self, search_request: str) -> None:
         """Функция для поиска книг"""
@@ -65,12 +80,6 @@ class Library:
         """Функция для поиска по автору"""
 
         return search_request.lower() == str(book.year).lower()
-
-    @staticmethod
-    def __search_in_author(book: Book, search_request: str) -> bool:
-        """Функция для поиска в названии"""
-
-        return search_request in book.author
 
     def print_all_book(self):
         """Функция для вывода всех книг"""

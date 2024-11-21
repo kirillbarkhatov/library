@@ -16,4 +16,9 @@ if __name__ == "__main__":
 
     print(library)
     library.print_all_book()
-    library.search_book("книааа")
+    library.change_book_status(2,"вЫдана")
+    library.print_all_book()
+    library.change_book_status(3, "вЫдана")
+    library.print_all_book()
+    library.delete_book(3)
+    library.print_all_book()
