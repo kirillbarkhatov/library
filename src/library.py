@@ -31,10 +31,46 @@ class Library:
         except ValueError:
             print(f"Книги с id={id} нет в библиотеке")
 
-    def search_book(self):
-        """Функция для поиска книги"""
+    def search_book(self, search_request: str) -> None:
+        """Функция для поиска книг"""
 
-        pass
+        result = [
+            book
+            for book in self.books
+            if Library.__search_in_title(book, search_request)
+            or Library.__search_in_author(book, search_request)
+            or Library.__search_in_year(book, search_request)
+        ]
+
+        if not result:
+            print("Книг по вашему запросу не найдено")
+
+        for book in result:
+            print(book)
+
+    @staticmethod
+    def __search_in_title(book: Book, search_request: str) -> bool:
+        """Функция для поиска в названии"""
+
+        return search_request.lower() in book.title.lower()
+
+    @staticmethod
+    def __search_in_author(book: Book, search_request: str) -> bool:
+        """Функция для поиска по автору"""
+
+        return search_request.lower() in book.author.lower()
+
+    @staticmethod
+    def __search_in_year(book: Book, search_request: str) -> bool:
+        """Функция для поиска по автору"""
+
+        return search_request.lower() == str(book.year).lower()
+
+    @staticmethod
+    def __search_in_author(book: Book, search_request: str) -> bool:
+        """Функция для поиска в названии"""
+
+        return search_request in book.author
 
     def print_all_book(self):
         """Функция для вывода всех книг"""
