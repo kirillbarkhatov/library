@@ -62,12 +62,18 @@ class UI:
             print(f"{UI.GREEN}Для дальнейшей работы доступны следующие файлы: {UI.RESET}")
             for i in range(len(files)):
                 print(f"{i + 1}. {files[i]}")
-            file_for_work = input("Введите имя требуемого файла: ")
-            file_worker = JSONWorker(file_for_work)
-            books = file_worker.get_from_file()
-            library = Library(file_for_work[:-5])
-            library.add_books_from_list(books)
-            print(f"{UI.YELLOW}Данные загружены из файла{UI.RESET}")
+            try:
+                file_for_work = input("Введите имя требуемого файла: ")
+                file_worker = JSONWorker(file_for_work)
+                books = file_worker.get_from_file()
+                library = Library(file_for_work[:-5])
+                library.add_books_from_list(books)
+                print(f"{UI.YELLOW}Данные загружены из файла{UI.RESET}")
+            except FileNotFoundError:
+                print(f"{UI.RED}Файл с таким названием не найден{UI.RESET}")
+                library = Library()
+                print(f"{UI.YELLOW}Создана пустая библиотека с именем {library.name}{UI.RESET}")
+                print()
             UI.library_working(library)
 
     @staticmethod
@@ -139,8 +145,19 @@ class UI:
 
         print()
         print("Добавляем новую книгу в библиотеку")
-        title = input("Введите название книги: ")
-        author = input("Введите автора книги: ")
+        title = ""
+        author = ""
+        while len(title) == 0:
+            title = input("Введите название книги: ")
+            if len(title) > 0:
+                break
+            print("Повторите ввод")
+
+        while len(author) == 0:
+            author = input("Введите автора книги: ")
+            if len(author) > 0:
+                break
+            print("Повторите ввод")
 
         year = 0
         while year // 1000 not in (1, 2):
@@ -228,11 +245,14 @@ class UI:
             print(f"{UI.GREEN}Для дальнейшей работы доступны следующие файлы: {UI.RESET}")
             for i in range(len(files)):
                 print(f"{i + 1}. {files[i]}")
-            file_for_work = input("Введите имя требуемого файла: ")
-            file_worker = JSONWorker(file_for_work)
-            books = file_worker.get_from_file()
-            library.add_books_from_list(books)
-            print(f"{UI.YELLOW}Данные загружены из файла{UI.RESET}")
+            try:
+                file_for_work = input("Введите имя требуемого файла: ")
+                file_worker = JSONWorker(file_for_work)
+                books = file_worker.get_from_file()
+                library.add_books_from_list(books)
+                print(f"{UI.YELLOW}Данные загружены из файла{UI.RESET}")
+            except FileNotFoundError:
+                print(f"{UI.RED}Файл с таким названием не найден{UI.RESET}")
             UI.library_working(library)
 
     @staticmethod
