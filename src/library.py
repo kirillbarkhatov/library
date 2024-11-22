@@ -101,3 +101,9 @@ class Library:
         max_id = max(ids)
         return max_id
 
+    def get_books_list(self) -> list[dict]:
+        """Получить список книг"""
+
+        return [book.__dict__ for book in self.books]
+
+

@@ -12,11 +12,12 @@ class Book:
     def __init__(self, title: str, author: str, year: int) -> None:
         """Создание экземпляра книги"""
 
+        self.__id = None
         self.title = title
         self.author = author
         self.year = year
         self.__status = "в наличии"
-        self.__id = None
+
 
     def __str__(self):
         """Вывод данных о книге"""

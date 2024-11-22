@@ -1,5 +1,6 @@
 from src.book import Book
 from src.library import Library
+from src.json_worker import JSONWorker
 
 
 
@@ -22,3 +23,6 @@ if __name__ == "__main__":
     library.print_all_book()
     library.delete_book(3)
     library.print_all_book()
+    books = library.get_books_list()
+    json_worker = JSONWorker()
+    json_worker.save_to_file(books)
