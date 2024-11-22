@@ -12,6 +12,7 @@ class Book:
     def __init__(self, title: str, author: str, year: int) -> None:
         """Создание экземпляра книги"""
 
+        Book.__input_validation(title, author, year)
         self.__id = None
         self.title = title
         self.author = author
@@ -60,3 +61,16 @@ class Book:
         book = cls(title, author, year)
         book.status = status
         return book
+
+    @staticmethod
+    def __input_validation(title: str, author: str, year: int) -> Any:
+        """Валидация полученных атрибутов"""
+
+        if not title or not author or not year:
+            raise TypeError("В атрибутах передан None")
+
+        if not isinstance(title, str) or not isinstance(author, str) or not isinstance(year, int):
+            raise TypeError("Неправильный тип данных")
+
+        if year // 1000 not in (1, 2):
+            raise ValueError("Ожидается год в формате 1YYY или 2YYY")
