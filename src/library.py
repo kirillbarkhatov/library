@@ -63,8 +63,15 @@ class Library:
         if not result:
             print("Книг по вашему запросу не найдено")
 
+        header = f"{("#" + " " * 5)[:5]} | {("Название" + " " * 30)[:30]} | {("Автор" + " " * 15)[:15]} | Год  | Статус"
+        header_index = 0
         for book in result:
+            if header_index % 5 == 0:
+                print()
+                print(header)
+                print()
             print(book)
+            header_index += 1
 
     @staticmethod
     def __search_in_title(book: Book, search_request: str) -> bool:
@@ -95,6 +102,7 @@ class Library:
                 print(header)
                 print()
             print(book)
+            header_index += 1
 
     def __get_list_ids(self) -> list[int]:
         """Функция для получения списка всех id книг в библиотеке"""
@@ -115,4 +123,12 @@ class Library:
 
         return [book.__dict__ for book in self.books]
 
+    def add_books_from_list(self, books: list) -> None:
+        """Добавить книги из списка книг"""
+
+        try:
+            for book in books:
+                self.add_book(Book.from_dict(book))
+        except KeyError:
+            pass
 

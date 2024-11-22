@@ -41,7 +41,7 @@ class UI:
             case 1:
                 UI.working_with_new_library()
             case 2:
-                pass
+                UI.working_with_exist_library()
 
     @staticmethod
     def working_with_new_library() -> Any:
@@ -52,20 +52,26 @@ class UI:
         print()
         return UI.library_working(library)
 
-    # @staticmethod
-    # def files_info_and_choice() -> None:
-    #     """Получение и вывод данных о файлах"""
-    #
-    #     files = file_data_info()
-    #     if len(files) == 0:
-    #         print("Доступные для работы файлы отсутствуют")
-    #     else:
-    #         print("Для дальнейшей работы доступны следующие файлы: ")
-    #         for i in range(len(files)):
-    #             print(f"{i + 1}. {files[i]}")
-    #         file_for_work = input("Введите имя требуемого файла: ")
-    #         UI.file_working(file_for_work)
-    #
+    @staticmethod
+    def working_with_exist_library() -> None:
+        """Получение данных из существующей библиотеки"""
+
+        files = file_data_info()
+        if len(files) == 0:
+            print(f"{UI.YELLOW}Доступные для работы файлы отсутствуют{UI.RESET}")
+            UI.working_with_new_library()
+        else:
+            print(f"{UI.GREEN}Для дальнейшей работы доступны следующие файлы: {UI.RESET}")
+            for i in range(len(files)):
+                print(f"{i + 1}. {files[i]}")
+            file_for_work = input("Введите имя требуемого файла: ")
+            file_worker = JSONWorker(file_for_work)
+            books = file_worker.get_from_file()
+            library = Library(file_for_work)
+            library.add_books_from_list(books)
+            print(f"{UI.YELLOW}Данные загружены из файла{UI.RESET}")
+            UI.library_working(library)
+
     # @staticmethod
     # def file_working(file_name: str) -> Any:
     #     """Функция интерфейса для выбора опций загрузки данных о вакансиях из файла"""
@@ -110,7 +116,7 @@ class UI:
         print("6. Добавить книги из другой библиотеки (файла json)")
         print("7. Сохранить изменения в библиотеке (в файл json)")
         print("8. Переименовать библиотеку")
-        print("9. Завершить работу и выйти (данные будут автоматически сохранены")
+        print("9. Завершить работу и выйти (данные будут автоматически сохранены)")
         choice = 0
         while choice not in range(1, 10):
             try:
@@ -137,15 +143,15 @@ class UI:
 
             case 4:
                 # 4. Найти книгу
-                pass
+                UI.choice_4_search_books(library)
 
             case 5:
                 # 5. Выдать/принять книгу (сменить статус книги)
-                pass
+                UI.choice_5_search_books(library)
 
             case 6:
                 # 6. Добавить книги из другой библиотеки (файла json)
-                pass
+                UI.choice_6_add_from_library(library)
 
             case 7:
                 # 7. Сохранить изменения в библиотеке (в файл json)
@@ -156,7 +162,7 @@ class UI:
                 pass
 
             case 9:
-                # 9. Завершить работу и выйти (данные будут автоматически сохранены
+                # 9. Завершить работу и выйти (данные будут автоматически сохранены)
                 pass
 
     @staticmethod
@@ -218,6 +224,48 @@ class UI:
         print()
         UI.library_working(library)
 
+    @staticmethod
+    def choice_4_search_books(library: Library) -> None:
+        """Интерфейс вывода списка книг"""
+
+        print()
+        search_request = input("Введите название, автора или год выпуска книги для поиска: ")
+        library.search_book(search_request)
+        print()
+        UI.library_working(library)
+
+    @staticmethod
+    def choice_5_search_books(library: Library) -> None:
+        """Интерфейс смены статуса книги"""
+
+        print()
+        print("Библиотека содержит следующие книги:")
+        library.print_all_book()
+        print()
+        book_id = int(input("Введите введите индекс книги для смены статуса: "))
+        book_status = input('Введите новый статус: "в наличии" или "выдана": ')
+        library.change_book_status(book_id, book_status)
+        print()
+        UI.library_working(library)
+
+    @staticmethod
+    def choice_6_add_from_library(library: Library) -> None:
+        """Получение данных из существующей библиотеки"""
+
+        files = file_data_info()
+        if len(files) == 0:
+            print(f"{UI.YELLOW}Доступные для работы файлы отсутствуют{UI.RESET}")
+            UI.library_working(library)
+        else:
+            print(f"{UI.GREEN}Для дальнейшей работы доступны следующие файлы: {UI.RESET}")
+            for i in range(len(files)):
+                print(f"{i + 1}. {files[i]}")
+            file_for_work = input("Введите имя требуемого файла: ")
+            file_worker = JSONWorker(file_for_work)
+            books = file_worker.get_from_file()
+            library.add_books_from_list(books)
+            print(f"{UI.YELLOW}Данные загружены из файла{UI.RESET}")
+            UI.library_working(library)
 
     # @staticmethod
     # def save_to_file(vacancies: list) -> None:
