@@ -74,7 +74,7 @@
         "title": "Книжище",
         "author": "Автор 2",
         "year": 2000,
-        "_Book__status": "в наличии"
+        "_Book__status": "выдана"
     },
     {
         "_Book__id": 12,

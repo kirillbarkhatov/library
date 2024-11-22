@@ -57,5 +57,8 @@ class Book:
         title = book_dict["title"]
         author = book_dict["author"]
         year = book_dict["year"]
-        return cls(title, author, year)
+        status = book_dict["_Book__status"]
+        book = cls(title, author, year)
+        book.status = status
+        return book
 
