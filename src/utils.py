@@ -36,8 +36,8 @@ def file_data_info() -> list:
             checked_files.append(file)
             print(f"{file} - содержит {books_count} книг(и)")
         except TypeError:
-            print(f"{file} - файл не содержит данных о вакансиях или формат файла не поддерживается")
+            print(f"{file} - файл не содержит данных о книгах или формат файла не поддерживается")
         except FileNotFoundError:
-            print(f"{file} - файл не содержит данных о вакансиях или формат файла не поддерживается")
+            print(f"{file} - файл не содержит данных о книгах или формат файла не поддерживается")
 
     return checked_files

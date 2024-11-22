@@ -1,5 +1,7 @@
 import pytest
 
+from unittest.mock import patch
+
 from src.book import Book
 from src.library import Library
 
