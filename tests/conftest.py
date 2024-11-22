@@ -55,3 +55,12 @@ def sample_library():
     library.add_book(Book("To Kill a Mockingbird", "Harper Lee", 1960))
     library.add_book(Book("The Great Gatsby", "F. Scott Fitzgerald", 1925))
     return library
+
+
+@pytest.fixture
+def library_data():
+    """Фикстура для данных библиотеки."""
+    return [
+        {"title": "1984", "author": "George Orwell", "year": 1949},
+        {"title": "To Kill a Mockingbird", "author": "Harper Lee", "year": 1960},
+    ]
