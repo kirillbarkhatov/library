@@ -1,5 +1,6 @@
 import json
 from unittest.mock import mock_open, patch
+
 from src.json_worker import JSONWorker
 
 
@@ -50,7 +51,6 @@ def test_delete_from_file(library_data):
 
     # Проверяем, что json.dump был вызван с пустым списком
     mock_json_dump.assert_called_with([], mock_file(), indent=4, ensure_ascii=False)
-
 
 
 def test_check_and_get_file_name():

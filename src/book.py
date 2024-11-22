@@ -1,5 +1,6 @@
 from typing import Any
 
+
 class Book:
     """Класс для работы с книгами"""
 

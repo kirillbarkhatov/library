@@ -1,11 +1,12 @@
-import pytest
-
 from unittest.mock import patch
+
+import pytest
 
 from src.book import Book
 from src.library import Library
 
 # Корректные экземпляры Book
+
 
 @pytest.fixture
 def book1():
@@ -45,7 +46,7 @@ def book_dict():
         "title": "War and Peace",
         "author": "Leo Tolstoy",
         "year": 1869,
-        "_Book__status": "выдана"
+        "_Book__status": "выдана",
     }
 
 
