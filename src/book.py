@@ -24,25 +24,25 @@ class Book:
 
     @property
     def id(self) -> int | None:
-        """Функция для получения id книги"""
+        """Метод для получения id книги"""
 
         return self.__id
 
     @id.setter
     def id(self, uniq_id: int) -> None:
-        """Функция для присвоения уникального id книги"""
+        """Метод для присвоения уникального id книги"""
 
         self.__id = uniq_id
 
     @property
     def status(self) -> str:
-        """Функция для получения статуса книги"""
+        """Метод для получения статуса книги"""
 
         return self.__status
 
     @status.setter
     def status(self, status: str) -> None:
-        """Функция для присвоения статуса книги"""
+        """Метод для присвоения статуса книги"""
 
         if status.lower() in ("в наличии", "выдана"):
             self.__status = status.lower()
