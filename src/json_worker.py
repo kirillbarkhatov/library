@@ -1,6 +1,7 @@
 import json
 from typing import Any
 
+
 class JSONWorker:
     """Класс для работы с json файлами"""
 

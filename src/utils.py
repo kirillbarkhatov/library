@@ -1,7 +1,8 @@
 import os
 
-from src.json_worker import JSONWorker
 from src.book import Book
+from src.json_worker import JSONWorker
+
 
 def file_data_info() -> list:
     """Функция для получения данных о файлах в папке data"""

@@ -1,20 +1,18 @@
 from typing import Any
 
-
-from src.json_worker import JSONWorker
-from src.utils import file_data_info
 from src.book import Book
+from src.json_worker import JSONWorker
 from src.library import Library
-
+from src.utils import file_data_info
 
 
 class UI:
 
     # # Цвета
-    GREEN = '\033[92m'
-    RED = '\033[91m'
-    YELLOW = '\033[93m'
-    RESET = '\033[0m'
+    GREEN = "\033[92m"
+    RED = "\033[91m"
+    YELLOW = "\033[93m"
+    RESET = "\033[0m"
 
     @staticmethod
     def lets_go() -> None:

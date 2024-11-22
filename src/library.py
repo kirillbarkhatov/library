@@ -1,11 +1,11 @@
 from src.book import Book
 
+
 class Library:
     """Класс для работы с библиотекой"""
 
     name: str
     books: list
-
 
     def __init__(self, name: str = "library") -> None:
         """Инициализация библиотеки"""
@@ -13,7 +13,7 @@ class Library:
         self.name = name
         self.books = []
 
-    def __str__(self):
+    def __str__(self) -> str:
         """Вывод информации о библиотеке"""
 
         return f"В библиотеке содержится {len(self.books)} книг(и)"
@@ -31,7 +31,7 @@ class Library:
         book_index = ids.index(book_id)
         return book_index
 
-    def change_book_status(self, book_id, status) -> None:
+    def change_book_status(self, book_id: int, status: str) -> None:
         """Изменение статуса книги"""
 
         try:
@@ -63,7 +63,9 @@ class Library:
         if not result:
             print("Книг по вашему запросу не найдено")
 
-        header = f"{("#" + " " * 5)[:5]} | {("Название" + " " * 30)[:30]} | {("Автор" + " " * 15)[:15]} | Год  | Статус"
+        header = (
+            f"{("#" + " " * 5)[:5]} | {("Название" + " " * 30)[:30]} | {("Автор" + " " * 15)[:15]} | Год  | Статус"
+        )
         header_index = 0
         for book in result:
             if header_index % 5 == 0:
@@ -91,10 +93,12 @@ class Library:
 
         return search_request.lower() == str(book.year).lower()
 
-    def print_all_book(self):
+    def print_all_book(self) -> None:
         """Функция для вывода всех книг"""
 
-        header = f"{("#" + " " * 5)[:5]} | {("Название" + " " * 30)[:30]} | {("Автор" + " " * 15)[:15]} | Год  | Статус"
+        header = (
+            f"{("#" + " " * 5)[:5]} | {("Название" + " " * 30)[:30]} | {("Автор" + " " * 15)[:15]} | Год  | Статус"
+        )
         header_index = 0
         for book in self.books:
             if header_index % 5 == 0:
@@ -131,4 +135,3 @@ class Library:
                 self.add_book(Book.from_dict(book))
         except KeyError:
             pass
-

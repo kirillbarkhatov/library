@@ -1,4 +1,4 @@
-
+from typing import Any
 
 class Book:
     """Класс для работы с книгами"""
@@ -18,13 +18,12 @@ class Book:
         self.year = year
         self.__status = "в наличии"
 
-
-    def __str__(self):
+    def __str__(self) -> str:
         """Вывод данных о книге"""
         return f"{(str(self.id) + " " * 5)[:5]} | {(self.title + " " * 30)[:30]} | {(self.author + " " * 15)[:15]} | {self.year} | {self.status}"
 
     @property
-    def id(self) -> int:
+    def id(self) -> int | None:
         """Функция для получения id книги"""
 
         return self.__id
@@ -51,7 +50,7 @@ class Book:
             print('Введите корректный статус: "в наличии" или "выдана"')
 
     @classmethod
-    def from_dict(cls, book_dict):
+    def from_dict(cls, book_dict: dict) -> Any:
         """Получить объект из словаря"""
 
         title = book_dict["title"]
@@ -61,4 +60,3 @@ class Book:
         book = cls(title, author, year)
         book.status = status
         return book
-
