@@ -67,40 +67,10 @@ class UI:
             file_for_work = input("Введите имя требуемого файла: ")
             file_worker = JSONWorker(file_for_work)
             books = file_worker.get_from_file()
-            library = Library(file_for_work)
+            library = Library(file_for_work[:-5])
             library.add_books_from_list(books)
             print(f"{UI.YELLOW}Данные загружены из файла{UI.RESET}")
             UI.library_working(library)
-
-    # @staticmethod
-    # def file_working(file_name: str) -> Any:
-    #     """Функция интерфейса для выбора опций загрузки данных о вакансиях из файла"""
-    #
-    #     if file_name[-5:] == ".json":
-    #         file_worker = JSONWorker(file_name)
-    #     elif file_name[-5:] == ".xlsx":
-    #         file_worker = ExcelWorker(file_name)
-    #     else:
-    #         print("Неверно введено имя файла")
-    #         return UI.files_info_and_choice()
-    #
-    #     print("Доступные действия: ")
-    #     print("1. Загрузить все вакансии из файла")
-    #     print("2. Очистить файл")
-    #     choice = int(input("Выберите 1 или 2: "))
-    #     if choice == 1:
-    #         vacancies_list = file_worker.get_from_file()
-    #         vacancies_objects = Vacancy.get_list_of_vacancies(vacancies_list)
-    #         print(f"Количество загруженных вакансий - {len(vacancies_objects)}")
-    #         return UI.vacancies_working(vacancies_objects)
-    #
-    #     elif choice == 2:
-    #         file_worker.delete_from_file()
-    #         print("Файл очищен")
-    #         return UI.files_info_and_choice()
-    #
-    #     else:
-    #         return UI.file_working(file_name)
 
     @staticmethod
     def library_working(library: Library) -> None:
@@ -155,15 +125,15 @@ class UI:
 
             case 7:
                 # 7. Сохранить изменения в библиотеке (в файл json)
-                pass
+                UI.choice_7_save_to_file(library)
 
             case 8:
                 # 8. Переименовать библиотеку
-                pass
+                UI.choice_8_save_to_file(library)
 
             case 9:
                 # 9. Завершить работу и выйти (данные будут автоматически сохранены)
-                pass
+                UI.choice_9_save_and_exit(library)
 
     @staticmethod
     def choice_1_add_book(library: Library) -> None:
@@ -267,48 +237,29 @@ class UI:
             print(f"{UI.YELLOW}Данные загружены из файла{UI.RESET}")
             UI.library_working(library)
 
-    # @staticmethod
-    # def save_to_file(vacancies: list) -> None:
-    #     """Функция интерфейса для выбора опций сохранения данных в файл"""
-    #
-    #     print("Выберете формат файла в которых нужно сохранить полученные вакансии: ")
-    #     print("1. json")
-    #     print("2. excel")
-    #
-    #     file_format = 0
-    #     while file_format not in [1, 2]:
-    #         try:
-    #             file_format = int(input("Введите цифру 1 или 2 для выбора формата файла: "))
-    #             if file_format not in [1, 2]:
-    #                 print("Повторите ввод")
-    #         except ValueError:
-    #             print("Повторите ввод")
-    #
-    #     file_name = input("Введите желаемое имя файла или пропустите ввод (имя по умолчанию - vacancies): ")
-    #     vacancies_to_save = Vacancy.get_list_of_dicts_vacancies(vacancies)
-    #     match file_format:
-    #         case 1:
-    #             if len(file_name) > 0:
-    #                 json_saver = JSONWorker(file_name)
-    #             else:
-    #                 json_saver = JSONWorker()
-    #                 file_name = "vacancies"
-    #             try:
-    #                 json_saver.add_to_file(vacancies_to_save)
-    #                 print(f"Данные успешно добавлены в файл {file_name}.json")
-    #             except (FileNotFoundError, KeyError, TypeError):
-    #                 json_saver.save_to_file(vacancies_to_save)
-    #                 print(f"Данные успешно сохранены в файл {file_name}.json")
-    #
-    #         case 2:
-    #             if len(file_name) > 0:
-    #                 excel_saver = ExcelWorker(file_name)
-    #             else:
-    #                 excel_saver = ExcelWorker()
-    #                 file_name = "vacancies"
-    #             try:
-    #                 excel_saver.add_to_file(vacancies_to_save)
-    #                 print(f"Данные успешно добавлены в файл {file_name}.xlsx")
-    #             except (FileNotFoundError, KeyError, TypeError):
-    #                 excel_saver.save_to_file(vacancies_to_save)
-    #                 print(f"Данные успешно сохранены в файл {file_name}.xlsx")
+    @staticmethod
+    def choice_7_save_to_file(library: Library) -> None:
+        """Сохранить библиотеку в файл"""
+
+        file_worker = JSONWorker(library.name)
+        file_worker.save_to_file(library.get_books_list())
+        print(f"{UI.YELLOW}Библиотека сохранена в {library.name}.json{UI.RESET}")
+        print()
+        UI.library_working(library)
+
+    @staticmethod
+    def choice_8_save_to_file(library: Library) -> None:
+        """Сохранить библиотеку в файл"""
+
+        library.name = input("Введите новое имя библиотеки: ")
+        UI.library_working(library)
+
+    @staticmethod
+    def choice_9_save_and_exit(library: Library) -> None:
+        """Сохранить библиотеку в файл"""
+
+        file_worker = JSONWorker(library.name)
+        file_worker.save_to_file(library.get_books_list())
+        print(f"{UI.YELLOW}Библиотека сохранена в {library.name}.json{UI.RESET}")
+        print()
+        print(f"{UI.GREEN}На сегодня работа завершена! Приходите к нам ещё!{UI.RESET}")

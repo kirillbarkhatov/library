@@ -1,0 +1,184 @@
+[
+    {
+        "_Book__id": 1,
+        "title": "Книга 1",
+        "author": "Автор 1",
+        "year": 2000,
+        "_Book__status": "в наличии"
+    },
+    {
+        "_Book__id": 2,
+        "title": "Книга 1",
+        "author": "Автор 1",
+        "year": 2000,
+        "_Book__status": "в наличии"
+    },
+    {
+        "_Book__id": 3,
+        "title": "Книжище",
+        "author": "Автор 2",
+        "year": 2000,
+        "_Book__status": "в наличии"
+    },
+    {
+        "_Book__id": 4,
+        "title": "Книга 1",
+        "author": "Автор 1",
+        "year": 2000,
+        "_Book__status": "в наличии"
+    },
+    {
+        "_Book__id": 5,
+        "title": "Книжище",
+        "author": "Автор 2",
+        "year": 2000,
+        "_Book__status": "в наличии"
+    },
+    {
+        "_Book__id": 6,
+        "title": "Книжище",
+        "author": "Автор 2",
+        "year": 2000,
+        "_Book__status": "в наличии"
+    },
+    {
+        "_Book__id": 7,
+        "title": "Книжище",
+        "author": "Автор 2",
+        "year": 2000,
+        "_Book__status": "в наличии"
+    },
+    {
+        "_Book__id": 8,
+        "title": "Книжище",
+        "author": "Автор 2",
+        "year": 2000,
+        "_Book__status": "в наличии"
+    },
+    {
+        "_Book__id": 9,
+        "title": "Книга 1",
+        "author": "Автор 1",
+        "year": 2000,
+        "_Book__status": "в наличии"
+    },
+    {
+        "_Book__id": 10,
+        "title": "Книжище",
+        "author": "Автор 2",
+        "year": 2000,
+        "_Book__status": "в наличии"
+    },
+    {
+        "_Book__id": 11,
+        "title": "Книжище",
+        "author": "Автор 2",
+        "year": 2000,
+        "_Book__status": "в наличии"
+    },
+    {
+        "_Book__id": 12,
+        "title": "Книжище",
+        "author": "Автор 2",
+        "year": 2000,
+        "_Book__status": "в наличии"
+    },
+    {
+        "_Book__id": 13,
+        "title": "Книжище",
+        "author": "Автор 2",
+        "year": 2000,
+        "_Book__status": "в наличии"
+    },
+    {
+        "_Book__id": 14,
+        "title": "Книга 1",
+        "author": "Автор 1",
+        "year": 2000,
+        "_Book__status": "в наличии"
+    },
+    {
+        "_Book__id": 15,
+        "title": "Книга 1",
+        "author": "Автор 1",
+        "year": 2000,
+        "_Book__status": "в наличии"
+    },
+    {
+        "_Book__id": 16,
+        "title": "Книжище",
+        "author": "Автор 2",
+        "year": 2000,
+        "_Book__status": "в наличии"
+    },
+    {
+        "_Book__id": 17,
+        "title": "Книга 1",
+        "author": "Автор 1",
+        "year": 2000,
+        "_Book__status": "в наличии"
+    },
+    {
+        "_Book__id": 18,
+        "title": "Книжище",
+        "author": "Автор 2",
+        "year": 2000,
+        "_Book__status": "в наличии"
+    },
+    {
+        "_Book__id": 19,
+        "title": "Книжище",
+        "author": "Автор 2",
+        "year": 2000,
+        "_Book__status": "в наличии"
+    },
+    {
+        "_Book__id": 20,
+        "title": "Книжище",
+        "author": "Автор 2",
+        "year": 2000,
+        "_Book__status": "в наличии"
+    },
+    {
+        "_Book__id": 21,
+        "title": "Книжище",
+        "author": "Автор 2",
+        "year": 2000,
+        "_Book__status": "в наличии"
+    },
+    {
+        "_Book__id": 22,
+        "title": "Книга 1",
+        "author": "Автор 1",
+        "year": 2000,
+        "_Book__status": "в наличии"
+    },
+    {
+        "_Book__id": 23,
+        "title": "Книжище",
+        "author": "Автор 2",
+        "year": 2000,
+        "_Book__status": "в наличии"
+    },
+    {
+        "_Book__id": 24,
+        "title": "Книжище",
+        "author": "Автор 2",
+        "year": 2000,
+        "_Book__status": "в наличии"
+    },
+    {
+        "_Book__id": 25,
+        "title": "Книжище",
+        "author": "Автор 2",
+        "year": 2000,
+        "_Book__status": "в наличии"
+    },
+    {
+        "_Book__id": 26,
+        "title": "Книжище",
+        "author": "Автор 2",
+        "year": 2000,
+        "_Book__status": "в наличии"
+    }
+]
