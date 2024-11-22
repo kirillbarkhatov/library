@@ -1,11 +1,10 @@
 import pytest
 
 from src.book import Book
-from tests.conftest import book1
 
 
 def test_book_create_success(book1, book2, book3, book4, book5):
-
+    """Проверка создания объекта книги"""
     assert book1.title == "1984"
     assert book2.author == "Harper Lee"
     assert book3.year == 1925
@@ -25,6 +24,7 @@ invalid_type_book_data = [
 
 @pytest.mark.parametrize("title,author,year", invalid_type_book_data)
 def test_type_invalid_books(title, author, year):
+    """Проверка неправильных данных о книге"""
     with pytest.raises(TypeError):
         Book(title=title, author=author, year=year)
 
@@ -37,11 +37,13 @@ invalid_value_book_data = [
 
 @pytest.mark.parametrize("title,author,year", invalid_value_book_data)
 def test_value_invalid_books(title, author, year):
+    """Проверка неправильного года"""
     with pytest.raises(ValueError):
         Book(title=title, author=author, year=year)
 
 
 def test_book_methods(capsys, book1, book_dict):
+    """Проверка всех методов книги"""
     # вывод __str__
     print(book1)
     captured = capsys.readouterr()
