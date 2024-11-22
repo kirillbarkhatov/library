@@ -13,10 +13,10 @@ def test_book_create_success(book1, book2, book3, book4, book5):
 
 
 invalid_type_book_data = [
-    (123, "George Orwell", 1949),         # Неверный тип для title
-    ("1984", None, 1949),                 # None вместо строки для author
-    ("1984", "George Orwell", "1949"),    # Неверный тип для year (str вместо int)
-    ("1984", "George Orwell", None),      # None вместо целого числа для year
+    (123, "George Orwell", 1949),  # Неверный тип для title
+    ("1984", None, 1949),  # None вместо строки для author
+    ("1984", "George Orwell", "1949"),  # Неверный тип для year (str вместо int)
+    ("1984", "George Orwell", None),  # None вместо целого числа для year
     ("", "George Orwell", 1949),
     ("1984", "", 1949),
 ]

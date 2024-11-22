@@ -81,8 +81,10 @@ def test_add_books_from_list(capsys, sample_library):
     assert sample_library.books[-1].title == "The Catcher in the Rye"
     sample_library.print_all_book()
     captured = capsys.readouterr()
-    assert (f'{("#" + " " * 5)[:5]} | {("Название" + " " * 30)[:30]} | {("Автор" + " " * 15)[:15]} | Год  | Статус'
-            in captured.out)
+    assert (
+        f'{("#" + " " * 5)[:5]} | {("Название" + " " * 30)[:30]} | {("Автор" + " " * 15)[:15]} | Год  | Статус'
+        in captured.out
+    )
 
 
 def test_str(capsys, sample_library):
