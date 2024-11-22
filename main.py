@@ -1,6 +1,7 @@
 from src.book import Book
 from src.library import Library
 from src.json_worker import JSONWorker
+from src.utils import file_data_info
 
 
 
@@ -25,18 +26,6 @@ if __name__ == "__main__":
     library.print_all_book()
     books = library.get_books_list()
     json_worker = JSONWorker()
-    json_worker.save_to_file(books)
+    # json_worker.save_to_file(books)
 
-    new_list = json_worker.get_from_file()
-    print(new_list)
-    test_book = Book.from_dict(new_list[0])
-    print(test_book)
-    for book in new_list:
-        library.add_book(Book.from_dict(book))
-        library.add_book(Book.from_dict(book))
-        library.add_book(Book.from_dict(book))
-        library.add_book(Book.from_dict(book))
-        library.add_book(Book.from_dict(book))
-
-
-    library.print_all_book()
+    print(file_data_info())

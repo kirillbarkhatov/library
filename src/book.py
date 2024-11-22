@@ -54,10 +54,8 @@ class Book:
     def from_dict(cls, book_dict):
         """Получить объект из словаря"""
 
-        try:
-            title = book_dict["title"]
-            author = book_dict["author"]
-            year = book_dict["year"]
-            return cls(title, author, year)
-        except TypeError:
-            print("Не удалось получить данные о книге")
+        title = book_dict["title"]
+        author = book_dict["author"]
+        year = book_dict["year"]
+        return cls(title, author, year)
+
