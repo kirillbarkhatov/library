@@ -1,5 +1,6 @@
 from typing import Any
 
+
 from src.json_worker import JSONWorker
 from src.utils import file_data_info
 from src.book import Book
@@ -9,13 +10,19 @@ from src.library import Library
 
 class UI:
 
+    # # Цвета
+    GREEN = '\033[92m'
+    RED = '\033[91m'
+    YELLOW = '\033[93m'
+    RESET = '\033[0m'
+
     @staticmethod
     def lets_go() -> None:
         """Функция запускающая программу"""
 
-        print("=====================================================")
+        print(f"{UI.GREEN}=====================================================")
         print("Консольное приложение для управления библиотекой книг")
-        print("=====================================================")
+        print(f"====================================================={UI.RESET}")
         print("Выберите действие:")
         print("1. Инициализировать/создать новую пустую библиотеку")
         print('2. Получить инф-ю об имеющихся библиотеках (хранятся в "data/", поддерживаемые форматы: json)')
@@ -40,13 +47,10 @@ class UI:
     def working_with_new_library() -> Any:
         """Функция для взаимодействия с пользователем при работе с новой пустой библиотекой"""
 
-        library_name = "library"
         library = Library()
+        print(f"{UI.YELLOW}Создана пустая библиотека с именем {library.name}{UI.RESET}")
         print()
-        print(f"Создана пустая библиотека с именем {library_name}")
-
-        print()
-        return UI.library_working(library, library_name)
+        return UI.library_working(library)
 
     # @staticmethod
     # def files_info_and_choice() -> None:
@@ -93,10 +97,10 @@ class UI:
     #         return UI.file_working(file_name)
 
     @staticmethod
-    def library_working(library: Library, library_name: str) -> None:
+    def library_working(library: Library) -> None:
         """Работа с библиотекой - доступ к функционалу"""
 
-        print(f'Библиотека "{library_name}".Количество книг - {len(library.get_books_list())}')
+        print(f'{UI.GREEN}Библиотека "{library.name}". {library}{UI.RESET}')
         print("Доступны следующие действия для работы с библиотекой:")
         print("1. Добавить книгу")
         print("2. Удалить книгу")
@@ -110,7 +114,7 @@ class UI:
         choice = 0
         while choice not in range(1, 10):
             try:
-                choice = int(input("Введите цифру от 1 до 8 для выбора действия: "))
+                choice = int(input("Введите цифру от 1 до 9 для выбора действия: "))
 
                 if choice not in range(1, 10):
                     print("Повторите ввод")
@@ -121,7 +125,7 @@ class UI:
 
             case 1:
                 # 1. Добавить книгу
-                UI.choice_1_add_book(library, library_name)
+                UI.choice_1_add_book(library)
 
             case 2:
                 # 2. Удалить книгу
@@ -129,7 +133,7 @@ class UI:
 
             case 3:
                 # 3. Посмотреть список книг
-                pass
+                UI.choice_3_books_list(library)
 
             case 4:
                 # 4. Найти книгу
@@ -156,9 +160,10 @@ class UI:
                 pass
 
     @staticmethod
-    def choice_1_add_book(library: Library, library_name: str) -> None:
+    def choice_1_add_book(library: Library) -> None:
         """Интерфейс добавления книги"""
 
+        print()
         print("Добавляем новую книгу в библиотеку")
         title = input("Введите название книги: ")
         author = input("Введите автора книги: ")
@@ -174,7 +179,20 @@ class UI:
                 print("Повторите ввод")
 
         library.add_book(Book(title, author, year))
-        UI.library_working(library, library_name)
+        print(f"{UI.YELLOW}Книга добавлена в библиотеку{UI.RESET}")
+        print()
+        UI.library_working(library)
+
+    @staticmethod
+    def choice_3_books_list(library: Library) -> None:
+        """Интерфейс вывода списка книг"""
+
+        print()
+        print("Библиотека содержит следующие книги:")
+
+        library.print_all_book()
+        UI.library_working(library)
+
 
     # @staticmethod
     # def save_to_file(vacancies: list) -> None:

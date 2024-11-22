@@ -3,11 +3,14 @@ from src.book import Book
 class Library:
     """Класс для работы с библиотекой"""
 
+    name: str
     books: list
 
-    def __init__(self) -> None:
+
+    def __init__(self, name: str = "library") -> None:
         """Инициализация библиотеки"""
 
+        self.name = name
         self.books = []
 
     def __str__(self):
@@ -84,7 +87,13 @@ class Library:
     def print_all_book(self):
         """Функция для вывода всех книг"""
 
+        header = f"{("#" + " " * 5)[:5]} | {("Название" + " " * 30)[:30]} | {("Автор" + " " * 15)[:15]} | Год  | Статус"
+        header_index = 0
         for book in self.books:
+            if header_index % 5 == 0:
+                print()
+                print(header)
+                print()
             print(book)
 
     def __get_list_ids(self) -> list[int]:

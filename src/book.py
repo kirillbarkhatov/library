@@ -21,7 +21,7 @@ class Book:
 
     def __str__(self):
         """Вывод данных о книге"""
-        return f"{self.id}. {self.title} - {self.author} // {self.year} - {self.status}"
+        return f"{(str(self.id) + " " * 5)[:5]} | {(self.title + " " * 30)[:30]} | {(self.author + " " * 15)[:15]} | {self.year} | {self.status}"
 
     @property
     def id(self) -> int:
