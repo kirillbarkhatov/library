@@ -129,7 +129,7 @@ class UI:
 
             case 2:
                 # 2. Удалить книгу
-                pass
+                UI.choice_2_delete_book(library)
 
             case 3:
                 # 3. Посмотреть список книг
@@ -184,13 +184,38 @@ class UI:
         UI.library_working(library)
 
     @staticmethod
+    def choice_2_delete_book(library: Library) -> None:
+        """Интерфейс удаления книги"""
+
+        print()
+        print("Библиотека содержит следующие книги:")
+        library.print_all_book()
+        print()
+
+        book_id = 0
+
+        while book_id < 1:
+            try:
+                book_id = int(input(f"{UI.RED}Введите индекс книги для её удаления: {UI.RESET}"))
+
+                if book_id < 1:
+                    print("Повторите ввод")
+            except ValueError:
+                print("Повторите ввод")
+
+        library.delete_book(book_id)
+        print(f"{UI.YELLOW}Книга удалена{UI.RESET}")
+        print()
+        UI.library_working(library)
+
+    @staticmethod
     def choice_3_books_list(library: Library) -> None:
         """Интерфейс вывода списка книг"""
 
         print()
         print("Библиотека содержит следующие книги:")
-
         library.print_all_book()
+        print()
         UI.library_working(library)
 
 
